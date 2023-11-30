@@ -7,6 +7,7 @@
 #include <string.h>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -15,20 +16,11 @@ void Varligin(ifstream& fin)
     int size;
     fin >> size;
 
-    int a = (int)malloc(size * sizeof(int*)); // матрица связей
-    for (int i = 0; i < size; i++) {
-        a[i] = (int*)malloc(size * sizeof(int));
-    }
+    vector<vector<int>> a(size, vector<int>(size)); // матрица связей
 
-    int d = (int)malloc(size * sizeof(int*)); // минимальное расстояние
-    for (int i = 0; i < size; i++) {
-        d[i] = (int*)malloc(size * sizeof(int));
-    }
+    vector<vector<int>> d(size, vector<int>(size)); // минимальное расстояние
 
-    int v = (int)malloc(size * sizeof(int*)); // посещенные вершины
-    for (int i = 0; i < size; i++) {
-        v[i] = (int*)malloc(size * sizeof(int));
-    }
+    vector<vector<int>> v(size, vector<int>(size)); // посещенные вершины
 
     int temp, minindex, min;
 
@@ -98,23 +90,4 @@ void Varligin(ifstream& fin)
             }
         }
     }
-
-    // Восстановление пути
-    int* ver = (int*)malloc(size * sizeof(int)); // массив посещенных вершин
-    //int end = end_index - 1; // индекс конечной вершины
-    //ver[0] = end + 1; // начальный элемент
-
-    // Освобождение памяти
-    for (int i = 0; i < size; i++) {
-        free(a[i]);
-    }
-    for (int i = 0; i < size; i++) {
-        free(d[i]);
-    }
-    for (int i = 0; i < size; i++) {
-        free(v[i]);
-    }
-    free(a);
-    free(d);
-    free(v);
 }
