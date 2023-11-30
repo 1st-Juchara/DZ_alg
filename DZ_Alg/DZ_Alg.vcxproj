@@ -127,7 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dubenko.cpp" />
     <ClCompile Include="DZ_Alg.cpp" />
+    <ClCompile Include="Kondarev.cpp" />
+    <ClCompile Include="TimirbaevErnest.cpp" />
+    <ClCompile Include="TimirbeavErik.cpp" />
+    <ClCompile Include="Varligin.cpp" />
+    <ClCompile Include="Zaharov.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
