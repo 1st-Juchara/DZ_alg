@@ -98,13 +98,13 @@ void Zaharov(std::ifstream& fin)
 
     if (fin.is_open()) {
 
-        fin >> vertex_count >> edge_count;
+        vertex_count = tryChoose(fin, 0, 9999); edge_count = tryChoose(fin, 0, vertex_count*vertex_count);
 
         edges.resize(edge_count);
 
         while (!fin.eof()) {
             for (auto& i : edges) {
-                fin >> i.source >> i.dest >> i.weight;
+                i.source = tryChoose(fin); i.dest = tryChoose(fin); i.weight = tryChoose(fin);
             }
         }
 

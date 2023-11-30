@@ -13,9 +13,8 @@ vector<int> get_path(vector<vector<int>>& from, int start, int finish) {
 
 void TimirbaevErik(ifstream& fin) {
 
-    int vertex_count, edge_count;
+    int vertex_count = tryChoose(fin, 0, 9999);  int edge_count = tryChoose(fin, 0, vertex_count*vertex_count);
     const int INF = 1e9;
-    fin >> vertex_count >> edge_count;
 
     vector<vector<int>> matrix(vertex_count, vector<int>(vertex_count, INF));
 
@@ -26,8 +25,7 @@ void TimirbaevErik(ifstream& fin) {
     }
 
     for (int i = 0; i < edge_count; i++) {
-        int a, b, weight;
-        fin >> a >> b >> weight;
+        int a = tryChoose(fin), int b = tryChoose(fin), int weight = tryChoose(fin);
 
         if (matrix[a][b] > weight) {
             matrix[a][b] = weight;

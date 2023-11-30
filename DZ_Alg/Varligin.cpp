@@ -13,8 +13,7 @@ using namespace std;
 
 void Varligin(ifstream& fin)
 {
-    int size;
-    fin >> size;
+    int size = tryChoose(fin, 0, 9999);
 
     vector<vector<int>> a(size, vector<int>(size)); // матрица связей
 
@@ -38,14 +37,13 @@ void Varligin(ifstream& fin)
     }
 
     // Ввод связей между вершинами
-    int ways_cnt;
-    fin >> ways_cnt;
+    int ways_cnt = tryChoose(fin, 0, ways_cnt*ways_cnt);
     for (int i = 0; i < ways_cnt; i++)
     {
         int index1, index2;
-        fin >> index1;
-        fin >> index2;
-        fin >> a[index1 - 1][index2 - 1];
+        int index1 = tryChoose(fin);
+        int index2 = tryChoose(fin);
+        a[index1 - 1][index2 - 1] = tryChoose(fin);
     }
 
     // Вывод матрицы связей

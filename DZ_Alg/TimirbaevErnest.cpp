@@ -90,7 +90,8 @@ void TimirbaevErnest(std::ifstream& fin) {
 
     if (fin.is_open()) {
 
-        fin >> vertex_count >> edge_count;
+        vertex_count = tryChoose(fin, 0, 9999);
+        edge_count = tryChoose(fin, 0, vertex_count*vertex_count);
 
         int length = edge_count + vertex_count;
         edges.resize(length);
@@ -106,7 +107,7 @@ void TimirbaevErnest(std::ifstream& fin) {
         while (!fin.eof()) {
 
             for (int i = vertex_count - 1; i < length; i++) {
-                fin >> edges[i].start >> edges[i].end >> edges[i].weight;
+                edges[i].start = tryChoose(fin); edges[i].end = tryChoose(fin); edges[i].weight = tryChoose(fin);
             }
         }
 

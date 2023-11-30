@@ -8,3 +8,4 @@ void TimirbaevErnest(std::ifstream& fin);
 void TimirbaevErik(std::ifstream& fin);
 void Varligin(std::ifstream& fin);
 void Zaharov(std::ifstream& fin);
+int tryChoose(std::ifstream& fin, int min = -9999, int max = 9999);
