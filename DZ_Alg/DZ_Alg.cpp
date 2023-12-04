@@ -2,9 +2,9 @@
 
 using namespace std;
 
-int tryChoose(ifstream& fin, int min = -9999, int max = 9999) {
+int tryChoose(ifstream& fin, int min, int max) {
     int num;
-    while ((cin >> num).fail() || (num < min) || (num > max)) {
+    while ((fin >> num).fail() || (num < min) || (num > max)) {
         fin.clear();
         fin.ignore(10000, '\n');
     }
@@ -13,5 +13,28 @@ int tryChoose(ifstream& fin, int min = -9999, int max = 9999) {
 
 int main()
 {
+    ifstream fin("input.txt");
+    if (fin.is_open()) {
+        Kondarev(fin);
+        cout << endl;
+        fin.clear();
+        fin.seekg(0);
+        TimirbaevErik(fin);
+        fin.clear();
+        fin.seekg(0);
+        cout << endl;
+        Varligin(fin);
+        fin.clear();
+        fin.seekg(0);
+        cout << endl;
+        Zaharov(fin);
+        fin.clear();
+        fin.seekg(0);
+        cout << endl;
+    }
+    else {
+        
+        cout << "Not found file!";
+    }
     return 0;
 }
