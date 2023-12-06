@@ -1,4 +1,5 @@
 ﻿#include "Header.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -13,8 +14,29 @@ int tryChoose(ifstream& fin, int min, int max) {
 
 int main()
 {
-    ifstream fin("input.txt");
+    ifstream fin("input3.txt");
     if (fin.is_open()) {
+        /*int c = 0;
+        vector <int> hz;
+        while (c < 50)
+        {
+            int start = 0;
+            int end = 49;
+            int y = rand() % (end - start + 1) + start;
+            bool t = false;
+            for (int i = 0; i < hz.size(); i++)
+                t = y == hz[i];
+            if (!t)
+            {
+                hz.push_back(y);
+                cout << c << ' ' << y << ' ' << rand() % (end - start + 1) + start << endl;
+                if (hz.size() == 10)
+                {
+                    c += 1;
+                    hz.clear();
+                }
+            }
+        }*/
         Kondarev(fin);
         cout << endl;
         fin.clear();
@@ -24,6 +46,10 @@ int main()
         fin.seekg(0);
         cout << endl;
         Varligin(fin);
+        fin.clear();
+        fin.seekg(0);
+        cout << endl;
+        Dubenko(fin);
         fin.clear();
         fin.seekg(0);
         cout << endl;
