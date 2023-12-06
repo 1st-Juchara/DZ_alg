@@ -11,8 +11,13 @@
 
 using namespace std;
 
+const int INF = INT_MAX / 2;
+
 void Varligin(ifstream& fin)
 {
+
+    auto start = chrono::system_clock::now();
+
     int size = tryChoose(fin, 0, 9999);
 
     vector<vector<int>> a(size, vector<int>(size)); // матрица связей
@@ -37,13 +42,13 @@ void Varligin(ifstream& fin)
     }
 
     // Ввод связей между вершинами
-    int ways_cnt = tryChoose(fin, 0, ways_cnt*ways_cnt);
+    int ways_cnt = tryChoose(fin, 0, 9999);
+
     for (int i = 0; i < ways_cnt; i++)
     {
-        int index1, index2;
-        int index1 = tryChoose(fin);
-        int index2 = tryChoose(fin);
-        a[index1 - 1][index2 - 1] = tryChoose(fin);
+        int index_1 = tryChoose(fin, 0, size - 1);
+        int index_2 = tryChoose(fin, 0, size - 1);
+        a[index_1][index_2] = tryChoose(fin, -9999, 9999);
     }
 
     // Вывод матрицы связей
@@ -87,5 +92,21 @@ void Varligin(ifstream& fin)
                 }
             }
         }
+    }
+
+    auto finish = chrono::system_clock::now();
+    auto time = chrono::duration_cast<chrono::microseconds>(finish - start).count();
+    cout << "Time for method: " << time << " microseconds" << endl;
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            if (d[i][j] == INF) {
+                cout << "      INF";
+            }
+            else {
+                cout << format("{:9}", d[i][j]);
+            }
+        }
+        cout << endl;
     }
 }
