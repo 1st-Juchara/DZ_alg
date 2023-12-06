@@ -81,7 +81,7 @@ void Dubenko(std::ifstream& fin)
             }
         }
     }
-    if (p[finishVertex] == -1)
+    if (p[finishVertex] == -1)//
     {
         cout << "No solution" << endl;
     }
