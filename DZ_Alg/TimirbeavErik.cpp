@@ -54,7 +54,7 @@ void TimirbaevErik(ifstream& fin) {
 
     auto finish = chrono::system_clock::now();
     auto time = chrono::duration_cast<chrono::microseconds>(finish - start).count();
-    cout << "Time for method: " << time << " microseconds" << endl << endl;
+    cout << "Time for method: " << time << " microseconds" << endl;
 
     for (int i = 0; i < vertex_count; i++) {
         for (int j = 0; j < vertex_count; j++) {
@@ -64,7 +64,7 @@ void TimirbaevErik(ifstream& fin) {
         cout << endl << endl;
     }
 
-    for (int i = 0; i < vertex_count; i++) {
+    /*for (int i = 0; i < vertex_count; i++) {
         for (int j = 0; j < vertex_count; j++) {
             if (matrix[i][j] == INF) cout << "There is no path from " << i << " to " << j << "." << endl << endl;
             else {
@@ -75,5 +75,5 @@ void TimirbaevErik(ifstream& fin) {
                 cout << " ]" << endl << endl;;
             }
         }
-    }
+    }*/
 }

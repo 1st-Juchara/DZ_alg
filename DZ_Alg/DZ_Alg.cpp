@@ -14,14 +14,14 @@ int tryChoose(ifstream& fin, int min, int max) {
 
 int main()
 {
-    ifstream fin("input3.txt");
+    ifstream fin("input5.txt");
     if (fin.is_open()) {
-        /*int c = 0;
+        int c = 0;
         vector <int> hz;
-        while (c < 50)
+        /*while (c < 30)
         {
             int start = 0;
-            int end = 49;
+            int end = 29;
             int y = rand() % (end - start + 1) + start;
             bool t = false;
             for (int i = 0; i < hz.size(); i++)
@@ -29,30 +29,40 @@ int main()
             if (!t)
             {
                 hz.push_back(y);
-                cout << c << ' ' << y << ' ' << rand() % (end - start + 1) + start << endl;
-                if (hz.size() == 10)
+                cout << c << ' ' << y << ' ' << rand() % (end - start + 1) + start + 1 << endl;
+                if (hz.size() == 8)
                 {
                     c += 1;
                     hz.clear();
                 }
             }
         }*/
+        cout << "Kondarev\n";
         Kondarev(fin);
         cout << endl;
         fin.clear();
         fin.seekg(0);
+        cout << "T. Erik\n";
         TimirbaevErik(fin);
         fin.clear();
         fin.seekg(0);
         cout << endl;
+        cout << "T. Ernest\n";
+        TimirbaevErnest(fin);
+        fin.clear();
+        fin.seekg(0);
+        cout << endl;
+        cout << "Varligin\n";
         Varligin(fin);
         fin.clear();
         fin.seekg(0);
         cout << endl;
+        cout << "Dubenko\n";
         Dubenko(fin);
         fin.clear();
         fin.seekg(0);
         cout << endl;
+        cout << "Zaharov\n";
         Zaharov(fin);
         fin.clear();
         fin.seekg(0);

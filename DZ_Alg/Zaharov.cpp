@@ -91,31 +91,33 @@ vector<int> bellmanFord(vector<Edge> const& edges, vector<int>& parent, int sour
 
 void Zaharov(std::ifstream& fin)
 {
-
+    auto start = chrono::system_clock::now();
 
     int vertex_count, edge_count;
     vector<Edge> edges;
 
-    if (fin.is_open()) {
+    
 
-        vertex_count = tryChoose(fin, 0, 9999); edge_count = tryChoose(fin, 0, vertex_count*vertex_count);
+    vertex_count = tryChoose(fin, 0, 9999); edge_count = tryChoose(fin, 0, 9999);
 
-        edges.resize(edge_count);
-
-        while (!fin.eof()) {
-            for (auto& i : edges) {
-                i.source = tryChoose(fin); i.dest = tryChoose(fin); i.weight = tryChoose(fin);
-            }
-        }
-
+    edges.resize(edge_count);
+    
+    for (auto& i : edges) {
+        i.source = tryChoose(fin); 
+        i.dest = tryChoose(fin); 
+        i.weight = tryChoose(fin);
     }
 
-    else cout << "Error! File does not exist.";
 
 
     for (int source = 0; source < vertex_count; source++) {
         vector<int> parent(vertex_count, -1);
         vector<int> distance = bellmanFord(edges, parent, source, vertex_count);
-        Print(distance, parent, source, vertex_count);
+
+        
+        //Print(distance, parent, source, vertex_count);
     }
+    auto finish = chrono::system_clock::now();
+    auto time = chrono::duration_cast<chrono::microseconds>(finish - start).count();
+    cout << "Time for method: " << time << " microseconds" << endl;
 }

@@ -117,29 +117,27 @@ void algorithm(vector<Edge>& edges, const int& vertex_count, const int& edge_cou
 
 
 void TimirbaevErnest(std::ifstream& fin) {
-    ifstream file;
-    file.open("input.txt", ios::in);
+
+    auto start = chrono::system_clock::now();
 
     int vertex_count, edge_count;
     set<int> vertex;
     vector<Edge> edges;
 
 
-    if (file.is_open()) {
+    if (fin.is_open()) {
 
-        vertex_count = tryChoose(file, 0, 9999); edge_count = tryChoose(file, 0, vertex_count * vertex_count);
+        vertex_count = tryChoose(fin, 0, 9999); edge_count = tryChoose(fin, 0, 9999);
 
         int length = edge_count + vertex_count;
         edges.resize(length);
 
-        while (!file.eof()) {
-
-            for (int i = vertex_count; i < length; i++) {
-                edges[i].start = tryChoose(file); edges[i].end = tryChoose(file); edges[i].weight = tryChoose(file);
-                vertex.insert(edges[i].start);
-                vertex.insert(edges[i].end);
-            }
+        for (int i = vertex_count; i < length; i++) {
+            edges[i].start = tryChoose(fin); edges[i].end = tryChoose(fin); edges[i].weight = tryChoose(fin);
+            vertex.insert(edges[i].start);
+            vertex.insert(edges[i].end);
         }
+   
 
         set<int>::iterator it_end = vertex.end();
         set<int>::iterator it_begin = vertex.begin();
@@ -156,7 +154,10 @@ void TimirbaevErnest(std::ifstream& fin) {
         algorithm(edges, vertex_count, edge_count, new_vertex);
 
     }
+    auto finish = chrono::system_clock::now();
+    auto time = chrono::duration_cast<chrono::microseconds>(finish - start).count();
+    cout << "Time for method: " << time << " microseconds" << endl;
 
-    else cout << "Error! File does not exist.";
+    //cout << "Error! File does not exist.";
 
 }

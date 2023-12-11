@@ -98,7 +98,7 @@ void Varligin(ifstream& fin)
     auto time = chrono::duration_cast<chrono::microseconds>(finish - start).count();
     cout << "Time for method: " << time << " microseconds" << endl;
 
-    for (int i = 0; i < size; ++i) {
+    /*for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) {
             if (d[i][j] == INF) {
                 cout << "      INF";
@@ -108,5 +108,5 @@ void Varligin(ifstream& fin)
             }
         }
         cout << endl;
-    }
+    }*/
 }

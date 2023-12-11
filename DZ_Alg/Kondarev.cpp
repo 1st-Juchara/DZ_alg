@@ -55,7 +55,7 @@ void Kondarev(ifstream& fin) {
     auto time = chrono::duration_cast<chrono::microseconds>(finish - start).count();
     cout << "Time for method: " << time << " microseconds" << endl;
 
-    for (int i = 0; i < n; ++i) {
+    /*for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             if (dist[i][j] == INF) {
                 cout << "      INF";
@@ -65,5 +65,5 @@ void Kondarev(ifstream& fin) {
             }
         }
         cout << endl;
-    }
+    }*/
 }

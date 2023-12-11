@@ -18,6 +18,9 @@ const int infinity = INT_MAX;
 
 void Dubenko(std::ifstream& fin)
 {
+
+    auto start = chrono::system_clock::now();
+
     auto time1 = steady_clock::now();
     int numberOfVertices = 0,
         startVertex = 1,
@@ -31,13 +34,13 @@ void Dubenko(std::ifstream& fin)
 
     if (fin.is_open()) {
 
-        numberOfVertices = tryChoose(fin, 0, 9999); edge_count = tryChoose(fin, 0, numberOfVertices * numberOfVertices); finishVertex = numberOfVertices;
+        numberOfVertices = tryChoose(fin, 0, 9999); edge_count = tryChoose(fin, 0, 9999); finishVertex = numberOfVertices;
         for (size_t i = 0; i < numberOfVertices + 1; ++i)
         {
             g.push_back({});
         }
 
-        while (!fin.eof()) {
+        for (int i = 0; i < edge_count; i++) {
             source_file = tryChoose(fin);
             dest_file = tryChoose(fin);
             weight_file = tryChoose(fin);
@@ -81,7 +84,11 @@ void Dubenko(std::ifstream& fin)
             }
         }
     }
-    if (p[finishVertex] == -1)
+
+    auto finish = chrono::system_clock::now();
+    auto time = chrono::duration_cast<chrono::microseconds>(finish - start).count();
+    cout << "Time for method: " << time << " microseconds" << endl;
+    /*if (p[finishVertex] == -1)
     {
         cout << "No solution" << endl;
     }
@@ -96,8 +103,5 @@ void Dubenko(std::ifstream& fin)
             cout << path[i] << ' > ';
         cout << endl << "Shortest path lenght: " << d[finishVertex];
     }
-    auto time2 = steady_clock::now();
-    auto time3 = duration_cast<microseconds>(time2 - time1).count();
-    cout << endl << "Time of programm: " << time3 << endl;
-    cin.get();
+    */
 };
